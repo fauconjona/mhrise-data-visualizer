@@ -1,14 +1,20 @@
 <template>
     <div class="app">
-        <div class="nav">
+        <div class="nav" :class="{'active': menuActive}">
             <div class="logo">
                 <img alt="Vue logo" src="./assets/logo.png">
             </div>
             <UploadData />
             <ul>
-                <li @click="view = 'global'">Global</li>
-                <li @click="view = 'damages'">Damages</li>
+                <li @click="view = 'global'; menuActive=false">Global</li>
+                <li @click="view = 'damages'; menuActive=false">Damages</li>
             </ul>
+        </div>
+        <div class="header">
+            <div class="logo">
+                <img alt="Vue logo" src="./assets/logo.png">
+            </div>
+            <BurgerButton class="burger" :active="menuActive" :toggle="toggleMenu"/>
         </div>
         <div class="container">
             <div class="content">            
@@ -23,6 +29,7 @@
 import GlobalLayout from './layouts/Global.vue'
 import DamagesLayout from './layouts/Damages.vue'
 import UploadData from './components/UploadData.vue'
+import BurgerButton from './components/BurgerButton.vue'
 import '../public/style.scss'
 
 export default {
@@ -30,13 +37,20 @@ export default {
     components: {
         GlobalLayout,
         DamagesLayout,
-        UploadData
+        UploadData,
+        BurgerButton
     },
     data() {
         return {
-            view: 'global'
+            view: 'global',
+            menuActive: false
         }
     },
+    methods: {
+        toggleMenu() {
+            this.menuActive = !this.menuActive;
+        }
+    }
 }
 </script>
 

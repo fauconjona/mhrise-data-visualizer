@@ -18,17 +18,22 @@ body {
         width: 20vw;
         background-color: #3162C8;
 
-        .logo {
+        & .logo {
             position: relative;
             width: 90%;
             margin: 5%;
+
+            // mobile
+            @media (max-width: 480px) {
+                display: none;
+            }
         }
         
-        .logo > img {
+        & .logo > img {
             width: 100%;
         }
 
-        .upload {
+        & .upload {
             display: flex;
             flex-direction: column;
             width: 100%;
@@ -61,6 +66,10 @@ body {
                 }
             }
 
+            // mobile
+            @media (max-width: 480px) {
+                margin-top: 112px;
+            }
         }
 
         // et on masque le input
@@ -94,6 +103,57 @@ body {
                 border-top: 1px solid rgba(255, 255, 255, 0.2);
             }
         }
+
+        // mobile
+        @media (max-width: 480px) {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: none;
+        }
+    }
+
+    .active {
+        // mobile
+        @media (max-width: 480px) {
+            display: block;
+        }
+    }
+
+    .header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background-color: #3162C8;
+        height: auto;
+        display: none;
+        z-index: 12;
+
+        .logo {
+            position: relative;
+            width: 100px;
+            margin: 16px;
+        }
+        
+        .logo > img {
+            width: 100%;
+        }
+
+        & .burger {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            margin: auto;
+            margin-right: 16px;
+        }
+
+        // mobile
+        @media (max-width: 480px) {
+            display: flex;
+            flex-direction: row;
+        }
     }
     
     .container {
@@ -101,7 +161,13 @@ body {
         flex-direction: column;
         align-items: center;
         height: 100vh;
-        width: 100vw;
+        width: 80vw;
+        overflow-y: auto;
+
+        // mobile
+        @media (max-width: 480px) {
+            width: 100vw;
+        }
     }
 }
 
